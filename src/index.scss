@@ -1,0 +1,222 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 垂直文字样式 */
+.writing-mode-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* 自定义颜色变量 */
+
+:root {
+  --color-primary: #3b82f6;
+  /* 蓝色 */
+  --color-secondary: #10b981;
+  /* 绿色 */
+  --color-accent: #f59e0b;
+  /* 橙色 */
+  --color-background: #f3f4f6;
+  /* 浅灰色 */
+  --color-text: #111827;
+  /* 深灰色 */
+}
+
+.ant-menu {
+  padding: 0 1rem;
+}
+
+
+.gradient-menu .ant-menu-item-selected {
+  background: linear-gradient(135deg, #3b82f6 0%, #22d3ee 100%) !important;
+  color: white;
+
+  .text-gray-600 {
+    color: white !important;
+  }
+}
+
+.gradient-menu .ant-menu-sub {
+  margin-left: 2rem;
+
+}
+
+.ant-menu-submenu-selected .ant-menu-submenu-title {
+  background: linear-gradient(90deg, #2564EB 0%, #06B5D4 100%) !important;
+  color: white;
+  height: 48px !important;
+  line-height: 48px !important;
+
+  .ant-menu-submenu-arrow {
+    color: white !important;
+  }
+
+  .text-gray-600 {
+    color: white !important;
+  }
+
+  svg {
+    color: white !important;
+  }
+
+}
+
+.ant-menu-submenu-title .ant-menu-item-icon,
+.ant-menu-item .ant-menu-item-icon {
+  width: 20px;
+  height: 20px;
+
+}
+
+.ant-menu-sub.ant-menu-inline .ant-menu-item {
+  padding-left: 10px !important;
+
+  .ant-menu-item-icon {
+    width: 1rem;
+    height: 1rem;
+    color: #4b5563;
+  }
+}
+
+.ant-menu-item-selected {
+  .ant-menu-item-icon {
+    color: white !important;
+  }
+}
+
+// .ant-menu-inline .ant-menu-item,
+// .ant-menu-submenu.ant-menu-submenu-inline .ant-menu-submenu-title {
+
+// }
+
+.ant-menu-light.ant-menu-inline .ant-menu-sub.ant-menu-inline {
+  background: transparent !important;
+}
+
+.ant-menu-item:not(.ant-menu-item-selected):hover {
+  background: #eef8fb !important;
+}
+
+.ant-menu-inline.ant-menu-root .ant-menu-submenu-title,
+.ant-menu-item {
+  padding-left: 1rem !important;
+  font-size: 16px;
+}
+
+.ant-menu-inline-collapsed .ant-menu-item {
+  padding-left: 0.6rem !important;
+}
+
+.ant-layout-sider.z-1 {
+  z-index: 11;
+  overflow: visible !important;
+}
+
+
+
+.ant-menu.ant-menu-sub {
+  position: relative;
+}
+
+.ant-menu-submenu-open .ant-menu-sub::before {
+  content: "";
+  height: 100%;
+  width: 1px;
+  background-color: #eee;
+  position: absolute;
+  left: -0.8rem;
+
+}
+
+.ant-menu-submenu-selected .ant-menu-submenu-title .leading-tight,
+.ant-menu-item-selected .leading-tight {
+  color: #eef8fb;
+}
+
+.ant-menu-submenu.ant-menu-submenu-inline {
+  margin-top: 1rem;
+}
+
+.ant-menu .ant-menu-submenu-title {
+  border-radius: 0.75rem;
+}
+
+.ant-menu-submenu-title .text-sm,
+.ant-menu-root>.ant-menu-item .text-sm {
+  font-size: 1rem;
+}
+
+.gradient-menu {
+  padding-top: 1rem;
+}
+
+
+/* 1. 修复 Tailwind 对 button 的重置 */
+.w-e-toolbar button {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 2. 核心：修复 Tailwind 把 svg 设为 block 导致的图标偏移 */
+.w-e-toolbar svg,
+.w-e-text-container svg {
+  display: inline-block !important;
+  vertical-align: middle;
+  width: 14px; /* wangeditor 默认图标大小 */
+  height: 14px;
+}
+
+/* 3. 确保下拉菜单（如标题、字体）不被遮挡 */
+.w-e-toolbar {
+  z-index: 1000 !important;
+}
+
+.w-e-select-list {
+  z-index: 10001 !important;
+}
+
+/* 4. 解决 Ant Design Form.Item 容器限制 */
+.ant-form-item-control-input-content {
+  overflow: visible !important;
+}
+
+/* 5. 修复工具栏换行问题 (如果容器太窄) */
+.w-e-toolbar {
+  flex-wrap: wrap !important;
+}
+/* 修复富文本预览时的表格和列表样式 */
+.w-e-text table {
+  border-collapse: collapse;
+  width: 100% !important;
+}
+
+.w-e-text table th,
+.w-e-text table td {
+  border: 1px solid #ccc !important; /* 强制显示边框 */
+  padding: 8px;
+  min-width: 30px;
+}
+
+.w-e-text table th {
+  background-color: #f1f1f1;
+  font-weight: bold;
+}
+
+/* 顺便修复可能存在的列表缩进问题（Tailwind 也会抹除 ul li 的圆点） */
+.w-e-text ul {
+  list-style-type: disc !important;
+  margin-left: 20px !important;
+}
+.w-e-text ol {
+  list-style-type: decimal !important;
+  margin-left: 20px !important;
+}
